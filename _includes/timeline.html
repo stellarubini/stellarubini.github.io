@@ -1,0 +1,12 @@
+<ul class="timeline{% if include.style %} timeline--{{ include.style }}{% endif %}">
+  {% for item in include.items %}
+  <li>
+    {% if include.style == "news" %}{% assign parts = item.date | split: " " %}
+    <span class="timeline__date"><span class="timeline__month">{{ parts[0] }}</span> <span class="timeline__year">{{ parts[1] }}</span></span>
+    {% else %}
+    <span class="timeline__date">{{ item.date }}</span>
+    {% endif %}
+    <span class="timeline__text">{{ item.text | markdownify | remove: '<p>' | remove: '</p>' | strip }}</span>
+  </li>
+  {% endfor %}
+</ul>

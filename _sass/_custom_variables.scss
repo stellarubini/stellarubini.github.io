@@ -1,0 +1,14 @@
+/* ==========================================================================
+   CUSTOM TYPOGRAPHY
+   Imported right after "themes" so every layout file picks these up.
+   Fonts are loaded from Google Fonts in _includes/head/custom.html
+   ========================================================================== */
+
+$display                    : "Fraunces", Georgia, serif;         // titles and name
+$serif                      : "Newsreader", Georgia, serif;       // body text
+$sans-serif                 : $serif;
+$sans-serif-narrow          : $serif;
+
+$global-font-family         : $serif;
+$header-font-family         : $display;
+$caption-font-family        : $serif;

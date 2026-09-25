@@ -1,0 +1,219 @@
+/* ==========================================================================
+   CUSTOM STYLE
+   Imported last: overrides colors and spacing of the base theme.
+   ========================================================================== */
+
+$accent                     : #8c2f39;   // bordeaux
+$accent-dark-mode           : #e8959d;
+$background-light-mode      : #fbf9f4;   // ivory
+
+/* Colors - light */
+:root {
+    --global-base-color                 : #{$accent};
+    --global-bg-color                   : #{$background-light-mode};
+    --global-text-color                 : #1f2328;
+    --global-text-color-light           : #5c6370;
+    --global-link-color                 : #{$accent};
+    --global-link-color-hover           : #{mix(#000, $accent, 25%)};
+    --global-link-color-visited         : #{$accent};
+    --global-masthead-link-color        : #1f2328;
+    --global-masthead-link-color-hover  : #{$accent};
+    --global-border-color               : #e9e4da;
+    --global-footer-bg-color            : #f3efe6;
+}
+
+/* Colors - dark */
+html[data-theme="dark"] {
+    --global-base-color                 : #{$accent-dark-mode};
+    --global-bg-color                   : #16181d;
+    --global-footer-bg-color            : #1d2027;
+    --global-text-color                 : #e4e6ea;
+    --global-text-color-light           : #9aa1ad;
+    --global-link-color                 : #{$accent-dark-mode};
+    --global-link-color-hover           : #{mix(#fff, $accent-dark-mode, 25%)};
+    --global-link-color-visited         : #{$accent-dark-mode};
+    --global-masthead-link-color        : #e4e6ea;
+    --global-masthead-link-color-hover  : #{$accent-dark-mode};
+    --global-border-color               : #2c3038;
+    --global-dark-border-color          : #2c3038;
+    --global-thead-color                : #1d2027;
+}
+
+/* Typography and spacing */
+body {
+  -webkit-font-smoothing: antialiased;
+}
+
+.page__content {
+  font-size: 1.12em;
+  line-height: 1.65;
+
+  p, li {
+    margin-bottom: 1.1em;
+  }
+
+  a {
+    text-decoration: none;
+    border-bottom: 1px solid rgba(127, 127, 127, 0.35);
+
+    &:hover {
+      border-bottom-color: currentColor;
+    }
+  }
+
+  /* Section headings (e.g. "Work experience" in the CV): small caps in the accent color */
+  h1, h2:not(.archive__item-title) {
+    font-family: $serif;
+    font-variant: small-caps;
+    text-transform: lowercase;
+    letter-spacing: 0.1em;
+    font-weight: 500;
+    font-size: 1.15em;
+    color: var(--global-base-color);
+    margin-top: 1.6em;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+}
+
+/* Display type: page titles, name, list titles */
+.page__title,
+.author__name,
+.archive__item-title,
+.masthead__menu-item--lg a {
+  font-family: $display;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.page__title {
+  font-size: 3.1em;
+  line-height: 1.05;
+  margin-bottom: 0.8em;
+
+  &::after {
+    content: "";
+    display: block;
+    width: 48px;
+    height: 3px;
+    margin-top: 0.45em;
+    background: var(--global-base-color);
+  }
+}
+
+/* Drop cap, opt-in with {: .drop-cap} under a paragraph */
+.page__content p.drop-cap::first-letter {
+  font-family: $display;
+  float: left;
+  font-size: 3.4em;
+  line-height: 0.85;
+  padding: 0.06em 0.08em 0 0;
+  color: var(--global-base-color);
+}
+
+/* Masthead: menu items in small caps */
+.greedy-nav a {
+  font-weight: 500;
+}
+
+.greedy-nav .masthead__menu-item:not(.masthead__menu-item--lg) a {
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.08em;
+  font-size: 1.05em;
+}
+
+/* Sidebar */
+.author__bio {
+  font-style: italic;
+  font-size: 0.95em;
+  line-height: 1.5;
+  color: var(--global-text-color-light);
+}
+
+.author__avatar img {
+  max-width: 200px;
+  padding: 6px;
+  border: 1px solid var(--global-base-color);
+}
+
+/* Lists of publications / projects / talks */
+.archive__item-title {
+  line-height: 1.3;
+}
+
+.archive__item-excerpt {
+  color: var(--global-text-color-light);
+}
+
+/* News and experience on the homepage (_includes/timeline.html) */
+.page__content .timeline {
+  list-style: none;
+  margin: 0 0 1.5em;
+  padding: 0;
+
+  li {
+    display: grid;
+    grid-template-columns: 8.5em 1fr;
+    gap: 1em;
+    margin-bottom: 0.5em;
+  }
+}
+
+.timeline__date {
+  font-variant: small-caps;
+  text-transform: lowercase;
+  letter-spacing: 0.06em;
+  color: var(--global-text-color-light);
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .page__content .timeline li {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}
+
+/* News: a bordeaux bar per item that fades from the latest news to the oldest,
+   date in display type above, text in italic like a short quotation */
+.page__content .timeline--news {
+  li {
+    display: block;
+    position: relative;
+    padding: 0.1em 0 0.1em 1.1em;
+    margin-bottom: 1.3em;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: var(--global-base-color);
+      opacity: 0.25;
+    }
+
+    &:nth-child(1)::before { opacity: 1; }
+    &:nth-child(2)::before { opacity: 0.75; }
+    &:nth-child(3)::before { opacity: 0.55; }
+    &:nth-child(4)::before { opacity: 0.4; }
+  }
+
+  .timeline__date {
+    display: block;
+    margin-bottom: 0.1em;
+    font-family: $display;
+    font-variant: normal;
+    text-transform: none;
+    letter-spacing: -0.01em;
+    font-weight: 600;
+    color: var(--global-base-color);
+  }
+
+  .timeline__text {
+    font-style: italic;
+    font-size: 1.06em;
+  }
+}

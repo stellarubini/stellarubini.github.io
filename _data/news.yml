@@ -1,0 +1,11 @@
+# Most recent first. "text" accepts Markdown (links, italics).
+- date: "Aug 2026"
+  text: "Started as Visiting Scholar at the [Sky Computing Lab](https://sky.cs.berkeley.edu/), UC Berkeley"
+- date: "Mar 2026"
+  text: "Paper on fraud detection, [from astrophysics to finance](/publication/2026-astrophysics-to-finance), published in *Astronomy and Computing*"
+- date: "Feb 2026"
+  text: "Paper on [anomalous time series detection](/publication/2026-hunting-the-outliers) published in *Astronomy and Computing*"
+- date: "Oct 2024"
+  text: "[Guest lecture on RAG](/talks/2024-polimi-rag-guest-lecture) at Politecnico di Milano"
+- date: "Mar 2024"
+  text: "[Talk at EAGE Digital 2024](/talks/2024-eage-digital) in Paris, on Generative AI for subsurface study reports"
